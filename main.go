@@ -1,17 +1,14 @@
 package main
 
 import (
-	"net/http"
+	"GOLANG-DEV-LOGIC-CHALLENGE-NOPECODE96/routes"
 	"fmt"
+	"log"
+	"net/http"
 )
 
 func main() {
-	http.HandleFunc("/analyze", analyzeHandler)
-
+	router := routes.SetupRouter()
 	fmt.Println("Starting server on port 8080")
-	http.ListenAndServe(":8080", nil)
-}
-
-func analyzeHandler(w http.ResponseWriter, r *http.Request) {
-	// Your code here
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
